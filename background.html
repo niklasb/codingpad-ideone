@@ -1,102 +1,63 @@
+<script src="js/Snippet.js"></script>
 <script>
-window.history = {};
-history.db = null;
+    archive = {};
+    archive.db = null;
 
-  history.open = function() {
-  var dbSize = 5 * 1024 * 1024; // 5MB
- history.db = openDatabase('History', '1.0', 'history', dbSize);
-}
-
-history.onError = function(tx, e) {
-  console.log('Something unexpected happened: ' + e.message );
-}
-
-history.onSuccess = function(tx, r) {
-}
-
-history.createTable = function() {
-  history.db.transaction(function(tx) {
-    tx.executeSql('CREATE TABLE IF NOT EXISTS ' + 
-                  'history(ID INTEGER PRIMARY KEY ASC, code TEXT, link TEXT, output TEXT, lang TEXT, time INTEGER)', []);
-  });
-}
-
-history.addItem = function(item, success, error) {
-  history.db.transaction(function(tx){
-    var addedOn = (new Date()).getTime();
-    tx.executeSql('INSERT INTO history(code, link, output, lang, time) VALUES (?,?,?,?,?)', 
-        [item.code,item.link,item.output,item.lang,addedOn],
-        (success || history.onSuccess),
-        (error || history.onError));
-    });
-}
-
-history.getAllItems = function(renderFunc) {
- history.db.transaction(function(tx) {
-    tx.executeSql('SELECT * FROM history ORDER BY time DESC', [], renderFunc, 
-        history.onError);
-    });
-}
-
-history.deleteItem = function(id, cb) {
- history.db.transaction(function(tx) {
-    tx.executeSql('DELETE FROM history WHERE ID=?', [id],
-        cb , history.onError);
-  });
-}
-
-history.dropTable = function(succ, err) {
-    history.db.transaction(function(tx) {
-        tx.executeSql('DROP TABLE IF EXISTS history', [], function() {history.createTable();succ();}, history.onError);
-    });
-}
-   
-
-history.open();
-history.createTable();
-
-CodeSnippet = {
-    db: history,
-    dirty: false,
-    get code() {
-        return sessionStorage.getItem('code');
-    },
-    set code(code) {
-        if(code != this.code) {
-            sessionStorage.setItem('code', code);
-            this.dirty = true;
-        }
-    },
-    get output() {
-        return sessionStorage.getItem('output');
-    },
-    set output(output) {
-        if(this.output != output) {
-            sessionStorage.setItem('output', output);
-            this.dirty = true;
-        }
-    },
-    get lang() {
-        return sessionStorage.getItem('lang');
-    },
-    set lang(lang) {
-        sessionStorage.setItem('lang', lang);
-    },
-    get link() {
-        return sessionStorage.getItem('link');
-    },
-    set link(link) {
-        sessionStorage.setItem('link', link);
-    },
-    clear : function() {
-        sessionStorage.clear();
-    },
-    save: function() {
-        if(this.link && this.dirty) {
-            this.db.addItem(this);
-            this.dirty = false;
-        }
+    archive.open = function() {
+        var dbSize = 10 * 1024 * 1024; // 5MB
+        archive.db = openDatabase('History', '1.0', 'history', dbSize);
     }
-};
 
+    archive.onError = function(tx, e) {
+        console.log('Something unexpected happened: ' + e.message );
+    }
+
+    archive.onSuccess = function(tx, r) {
+    }
+
+    archive.createTable = function() {
+        archive.db.transaction(function(tx) {
+            tx.executeSql('CREATE TABLE IF NOT EXISTS ' + 
+            'history(ID INTEGER PRIMARY KEY ASC, code TEXT, link TEXT, output TEXT, lang TEXT, time INTEGER)', []);
+        });
+    }
+
+    archive.addItem = function(item, success, error) {
+        archive.db.transaction(function(tx){
+            var addedOn = (new Date()).getTime();
+            tx.executeSql('INSERT INTO history(code, link, output, lang, time) VALUES (?,?,?,?,?)', 
+            [item.code,item.link,item.result,item.language,addedOn],
+            (success || archive.onSuccess),
+            (error || archive.onError));
+        });
+    }
+
+    archive.getAllItems = function(renderFunc) {
+        archive.db.transaction(function(tx) {
+            tx.executeSql('SELECT * FROM history ORDER BY time DESC', [], renderFunc, 
+            archive.onError);
+        });
+    }
+
+    archive.deleteItem = function(id, cb) {
+        archive.db.transaction(function(tx) {
+            tx.executeSql('DELETE FROM history WHERE ID=?', [id],
+            cb , archive.onError);
+        });
+    }
+
+    archive.dropTable = function(succ, err) {
+        archive.db.transaction(function(tx) {
+            tx.executeSql('DROP TABLE IF EXISTS history', [], function() {archive.createTable();succ();}, archive.onError);
+        });
+    }
+
+
+    archive.open();
+    archive.createTable();
+
+
+    function getCurrentSnippet() {
+        return window.current_snippet || new Snippet();
+    };
 </script>

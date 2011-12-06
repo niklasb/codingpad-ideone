@@ -1,107 +1,34 @@
-<style>
-.logo {
-font-family: courier-new, monospace;
-font-size: 100%;
-display: block;
-float: right;
-}
+<!DOCTYPE html>
+<html>
+<head>
+   <link rel="stylesheet" href="css/codemirror.css" type="text/css" />
+   <link rel="stylesheet" href="css/default.css" type="text/css" />
+   <link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+</body>
+    <div>
+        <span class="logo">
+            <a href="http://codepad.org">codepad</a> for Chrome
+        </span>
+        <span>Language: </span>
+        <select id="lang" name="lang" style="vertical-align:middle"></select>
+        <div id="codebox">
+            <textarea id="code"></textarea>
+            <button id="submit">Run</button>
+            <div id="note">codepad.org seems to be under heavy load... be patient or try again later.</div>
+        </div>
+    </div>
+    <div id="result">
+        <div><p>Output:</p><pre id="output"></pre></div>
+        <div><a id="result_link" href=""></a></div>
+        <div id="error"></div>
+    </div>
+    <div class="menu"><a id="history" href="#">Show history</a><a id="clear" href="#">Clear</a></div>
 
-.logo > a {
-text-decoration: none;
-}
-
-    
-body, html {
-  min-width:300px;
-  overflow-x:hidden;
-  font-family: sans-serif;
-  font-size: 12px;
-}
-
-#result {
-    border-top: 1px dotted #999;
-    display: none;
-}
-
-.CodeMirror-line-numbers {
-    font-size: 12px;
-    font-family: monospace;
-    color: #AAA;
-    padding-right: 5px;
-}
-#codebox {
-    margin-bottom: 10px;
-    margin-top: 10px;
-    font-family: monospace;
-
-}
-
-.editbox {
-    font-size: 12px !important;
-}
-
-#submit {
-    line-height: 18px;
-    margin-top: 20px;
-}
-
-.error {
-    color: #400;
-    font-weight: bolder;
-}
-.menu {
-    padding-top: 5px;
-    margin-top: 10px;
-    border-top: 1px solid #BBB;
-    width: 100%;
-
-}
-
-#history {
-    display: inline-block;
-    float: right;
-}
-
-#clear {
-    display: inline-block;
-    float: left;
-}
-
-#note {
-    font-size: 12px;
-    display: none;
-    font-style: italic;
-}
-
-
-</style>
-
-<div>
-    <span class="logo"><a href="http://codepad.org">codepad</a> for Chrome</span>
-<span>Language: </span>
-<select id="lang" name="lang" style="vertical-align:middle">
-<option value="C">C</option>
-<option value="C++">C++</option>
-<option value="D">D</option>
-<option value="Haskell">Haskell</option>
-<option value="Lua">Lua</option>
-<option value="OCaml">OCaml</option>
-<option value="PHP">PHP</option>
-<option value="Perl">Perl</option>
-<option value="Plain Text">Plain Text</option>
-<option value="Python">Python</option>
-<option value="Ruby">Ruby</option>
-<option value="Scheme">Scheme</option>
-<option value="Tcl">Tcl</option>
-</select>
-<div id="codebox">
-    <textarea id="code"></textarea>
-    <button id="submit">Run</button>
-    <div id="note">codepad.org seems to be under heavy load... be patient or try again later.</div>
-</div>
-</div>
-<div id="result"></div>
-<div class="menu"><a id="history" href="#">Show history</a><a id="clear" href="#">Clear</a></div>
-<script src="CodeMirror/js/codemirror.js"></script>
-<script src="popup.js"></script>
+<script src="js/codemirror-compressed.js"></script>
+<script src="js/languages.js"></script>
+<script src="js/Snippet.js"></script>
+<script src="js/popup.js"></script>
+</body>
+</html>
 

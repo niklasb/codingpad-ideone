@@ -1,0 +1,74 @@
+.logo {
+font-family: courier-new, monospace;
+font-size: 100%;
+display: block;
+float: right;
+}
+
+.logo > a {
+text-decoration: none;
+}
+
+    
+body, html {
+  min-width:300px;
+  overflow-x:hidden;
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+#result {
+    border-top: 1px dotted #999;
+    display: none;
+}
+
+#codebox {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-family: monospace;
+
+}
+
+.editbox {
+    font-size: 12px !important;
+}
+
+#submit {
+    line-height: 18px;
+    margin-top: 20px;
+}
+
+.error {
+    color: #400;
+    font-weight: bolder;
+}
+.menu {
+    padding-top: 5px;
+    margin-top: 10px;
+    border-top: 1px solid #BBB;
+    width: 100%;
+
+}
+
+#history {
+    display: inline-block;
+    float: right;
+}
+
+#clear {
+    display: inline-block;
+    float: left;
+}
+
+#note {
+    font-size: 12px;
+    display: none;
+    font-style: italic;
+}
+
+
+.CodeMirror-scroll {
+    min-height: 50px;
+    max-height: 300px;
+    height: auto;
+}
