@@ -1,0 +1,14 @@
+{
+  "name": "Chrome - codepad.org",
+  "version": "1.0",
+  "description": "A codepad.org interface.",
+    "background_page": "background.html",
+  "browser_action": {
+    "default_icon": "icon.png",
+    "popup": "popup.html"
+  },
+  "permissions": [
+    "tabs", "http://codepad.org/*"
+  ]
+
+}

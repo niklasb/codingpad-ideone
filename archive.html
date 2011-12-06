@@ -1,0 +1,88 @@
+<html>
+<head>
+        <title>Codepad for Chrome - History</title>
+        <script src="CodeMirror/js/highlight.js" type="text/javascript"></script>
+        <script src="CodeMirror/js/stringstream.js" type="text/javascript"></script>
+        <script src="CodeMirror/js/tokenize.js" type="text/javascript"></script>
+        <script src="jquery/jquery.min.js"></script>
+        <script src="jquery/jquery.timeago.js"></script>
+        <script src="history.js"></script>
+        <script type="text/javascript" src="CodeMirror/js/parsedummy.js"></script><script type="text/javascript" src="CodeMirror/js/parsecss.js"></script><script type="text/javascript" src="CodeMirror/js/tokenizejavascript.js"></script><script type="text/javascript" src="CodeMirror/js/parsejavascript.js"></script><script type="text/javascript" src="CodeMirror/js/parsexml.js"></script><script type="text/javascript" src="CodeMirror/js/parsepython.js"></script><script type="text/javascript" src="CodeMirror/js/parsehtmlmixed.js"></script><script type="text/javascript" src="CodeMirror/js/tokenizescheme.js"></script><script type="text/javascript" src="CodeMirror/js/parsescheme.js"></script><script type="text/javascript" src="CodeMirror/js/tokenizephp.js"></script><script type="text/javascript" src="CodeMirror/js/parsephp.js"></script><script type="text/javascript" src="CodeMirror/js/parsephphtmlmixed.js"></script><link rel="stylesheet" type="text/css" href="CodeMirror/css/csscolors.css"><link rel="stylesheet" type="text/css" href="CodeMirror/css/jscolors.css"><link rel="stylesheet" type="text/css" href="CodeMirror/css/phpcolors.css"><link rel="stylesheet" type="text/css" href="CodeMirror/css/pythoncolors.css"><link rel="stylesheet" type="text/css" href="CodeMirror/css/xmlcolors.css"><link rel="stylesheet" type="text/css" href="CodeMirror/css/schemecolors.css">
+        <style>
+            body {
+                font-family: sans-serif;
+                font-size: 12px;
+            }
+            .snippet {
+                margin-left: 20px;
+                margin-right: 20px;
+                position: relative;
+                border-bottom: 1px solid black;
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+            .date {
+                font-style: italic;
+            }
+            .lang {
+                font-weight: bold;
+            }
+            .code {
+                font-family: monospace;
+                background-color: #EEE;
+                border: 1px dotted black;
+                padding: 10px;
+            }
+            .output {
+                background-color: #FFFDC2;
+                padding: 10px;
+                margin-top: 10px;
+
+            }
+            .link {
+                font-size: 12px;
+            }
+            .action {
+                vertical-align: center;
+                text-align: center;
+            }
+            .delete {
+                font-weight: bold;
+                color: red;
+                cursor: pointer;
+            }
+            .edit {
+                font-weight: bold;
+                color: green;
+                cursor: pointer;
+                display: inline-block;
+                margin-left: 10px;
+            }
+            .action {
+                position: absolute;
+                top:-5px;
+                left:0;
+                display: none;
+                font-size: 22px;
+            }
+            .snippet:hover .action {
+                display: block;
+            }
+            .header {
+                font-size: 16px;
+            }
+
+        </style>
+    
+    
+    </head>
+    
+    <body>
+        <h1>Codepad for Chrome - History</h1>
+        <div id="items">
+        </div>
+        <div>
+            <a href="#" onclick="chrome.extension.getBackgroundPage().history.dropTable(function(){});$('#items').empty()">Remove all snippets</a>
+        </div>
+    </body>
+</html>
