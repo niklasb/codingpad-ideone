@@ -1,7 +1,7 @@
 {
-  "name": "chromepad",
-  "version": "0.3",
-  "description": "A codepad.org interface.",
+  "name": "Codingpad",
+  "version": "0.4",
+  "description": "Codingpad is a simple interface to the codepad.org website. It also keeps a history of your recent code snippets",
   "background_page": "background.html",
   "icons": {
       "16": "icon16.png",
@@ -10,7 +10,7 @@
   },
   "browser_action": {
     "default_icon": "icon19.png",
-    "default_title": "codepard.org for Chrome",
+    "default_title": "Codingpad",
     "popup": "popup.html"
   },
   "permissions": [
