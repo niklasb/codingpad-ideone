@@ -1,13 +1,15 @@
 
 $(function() {
-    $('#items').on('click', '.delete', function() {
+    $('#items').on('click', '.delete', function(e) {
+        e.preventDefault();
         var s = $(this).closest('.snippet');
         chrome.extension.getBackgroundPage().archive.deleteItem(s.data('snippet').ID, function() {
             s.remove();
         });
     });
 
-    $('#items').on('click', '.edit', function() {
+    $('#items').on('click', '.edit', function(e) {
+        e.preventDefault();
         loadSnippet($(this).closest('.snippet').data('snippet'));
     });
 
@@ -43,7 +45,8 @@ function renderItem(item) {
 
     row.find('.lang').text(languages[item.lang].display).end()
     .find('.date').text($.timeago(new Date(item.time))).end()
-    .find('.output').text(item.output);
+    .find('.output').text(item.output).end()
+    .find('.link a').prop('href', item.link).text(item.link);
 
     CodeMirror.runMode(item.code, languages[item.lang].mode, row.find('.code')[0]);
 

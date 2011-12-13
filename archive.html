@@ -15,7 +15,7 @@
     </head>
     
     <body>
-        <h1>Codepad for Chrome - History</h1>
+        <h1><a href="http://codepad.org">codepad.org</a> for Chrome - History</h1>
         <div>
             <a href="#" onclick="chrome.extension.getBackgroundPage().archive.dropTable(function(){});$('#items').empty()">Remove all snippets</a>
         </div>
@@ -23,19 +23,19 @@
         </div>
         <div id="snippetTemplate" style="display:none">
             <div class="snippet">
-                <p class="header">
+                <div class="header">
                 <span class="lang"></span>, <span class="date"></span>
-                </p>
+                <span class="action">&mdash;
+                    <a class="delete" title="delete" href="#">delete</a>
+                    <a class="edit" title="Reload (click toolbar button then)" href="#">edit</a>
+                </span>
+                </div>
                 <div><span class="label">Code:</span>  <pre class="code cm-s-default"></pre></div>
                 <div>
                     <span class="label">Output:</span>
                         <pre class="output"></pre>
                 </div>
-                <div class="link"><a href=""></a></div>
-                <div class="action">
-                    <span class="delete" title="delete">X</span>
-                    <span class="edit" title="Reload (click toolbar button then)">&#8634;</span>
-                </div>
+                <div class="link"><a target="_blank" href=""></a></div>
             </div>
         </div>
     </body>
