@@ -1,7 +1,7 @@
 {
-  "name": "Codingpad",
+  "name": "Codingpad-ideone",
   "version": "0.4",
-  "description": "Codingpad is a simple interface to the codepad.org website. It also keeps a history of your recent code snippets",
+  "description": "Codingpad-ideone is a simple interface to the ideone.com website. It also keeps a history of your recent code snippets",
   "background_page": "background.html",
   "icons": {
       "16": "icon16.png",
@@ -10,7 +10,7 @@
   },
   "browser_action": {
     "default_icon": "icon19.png",
-    "default_title": "Codingpad",
+    "default_title": "Codingpad-ideone",
     "popup": "popup.html"
   },
   "permissions": [

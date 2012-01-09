@@ -70,7 +70,7 @@ var Request = (function() {
     }
 
     function ontimeout() {
-        Editor.showError('Could not reach codepad.org');
+        Editor.showError('Could not reach ideone.com');
     }
 
     function onloadstart() {
