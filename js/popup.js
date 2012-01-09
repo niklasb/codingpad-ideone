@@ -36,18 +36,38 @@ var Request = (function() {
              output, textContainer, text;
 
         tmp.innerHTML = response;
-        output = tmp.querySelector("a[name='output']");
-        if(output) {
-            var textContainer = (output.nextElementSibling.querySelectorAll('pre') || [,])[1];
-            if(textContainer) {
-                result = textContainer.innerHTML;
+
+        var linkEl = tmp.querySelector("#link_presentation");
+        if(linkEl)  {
+            link = linkEl.value;
+
+            var id = link.split('/').pop();
+            var r = new XMLHttpRequest();
+            var result_code;
+            var json;
+            var retries = 20;
+            while (retries >= 0) {
+                r.open("POST",
+                       "http://ideone.com/ideone/Index/view/id/"
+                                           + id + "/ajax/1/lp/1",
+                       false);
+                r.send();
+                json = JSON.parse(r.responseText);
+                if (json.status !== "0") {
+                    retries--;
+                    continue;
+                }
+
+                var inouterr = document.createElement('div');
+                inouterr.innerHTML = json.inouterr;
+                var outputEl = inouterr.querySelector('pre');
+                if (outputEl) {
+                    result = outputEl.innerHTML;
+                }
+                break;
             }
         }
 
-        var linkEl = tmp.querySelector(".heading");
-        if(linkEl)  {
-            link = linkEl.nextElementSibling.firstElementChild.innerHTML;
-        }
         return new Snippet(language, code, result, link);
     }
 
@@ -96,14 +116,13 @@ var Request = (function() {
         request.ontimeout = ontimeout;
         request.onabort = onabort;
 
-        request.open( "POST", "http://codepad.org/", true);
+        request.open("POST", "http://ideone.com/ideone/Index/submit/", true);
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
         request.send([
-                     'submit=submit',
-                     'run=True',
-                     'lang=' + encodeURIComponent(languages[Editor.getLanguage()].value),
-                     'code=' + encodeURIComponent(Editor.getCode())
+            'lang=' + encodeURIComponent(languages[Editor.getLanguage()].value),
+            'run=1',
+            'file=' + encodeURIComponent(Editor.getCode()),
         ].join('&'));
 
         timeout = setTimeout(function() {

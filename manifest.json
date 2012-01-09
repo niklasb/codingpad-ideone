@@ -14,6 +14,6 @@
     "popup": "popup.html"
   },
   "permissions": [
-    "tabs", "http://codepad.org/*"
+    "tabs", "http://ideone.com/*"
   ]
 }
