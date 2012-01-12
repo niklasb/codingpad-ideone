@@ -38,6 +38,14 @@ body, html {
     margin-top: 20px;
 }
 
+#lang {
+    height: 20px;
+}
+
+#sample {
+    height: 21px;
+}
+
 .error {
     color: #400;
     font-weight: bolder;

@@ -242,7 +242,8 @@ var Editor = (function() {
         getLanguage: getLanguage,
         setLanguage: setLanguage,
         focus: focus,
-        setSnippet: setSnippet
+        setSnippet: setSnippet,
+        updateCode: updateCode
     };
 
 }());
@@ -310,6 +311,12 @@ var Editor = (function() {
         Editor.setLanguage(this.value);
     }, false);
 
+    document.getElementById('sample').addEventListener('click', function() {
+        var lang = languages[Editor.getLanguage()];
+        if ('sample' in lang) {
+            Editor.updateCode(lang.sample);
+        }
+    }, false);
 
 }());
 

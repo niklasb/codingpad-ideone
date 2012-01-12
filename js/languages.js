@@ -2,17 +2,35 @@ var languages = {
     'c': {
         value: '11',
         display: 'C',
-        mode: 'text/x-csrc'
+        mode: 'text/x-csrc',
+        sample:
+            '#include <stdio.h>\n' +
+            '\n' +
+            'int main(int argc, char** argv) {\n' +
+            '  printf("Hello world!\\n");\n' +
+            '}\n'
     },
     'c++': {
         value: '1',
         display: 'C++',
-        mode: 'text/x-c++src'
+        mode: 'text/x-c++src',
+        sample:
+            '#include <iostream>\n' +
+            '\n' +
+            'int main(int argc, char** argv) {\n' +
+            '  std::cout << "Hello world!" << std::endl;\n' +
+            '}\n'
     },
     'c++11': {
         value: '44',
         display: 'C++11',
-        mode: 'text/x-c++src'
+        mode: 'text/x-c++src',
+        sample:
+            '#include <iostream>\n' +
+            '\n' +
+            'int main(int argc, char** argv) {\n' +
+            '  std::cout << "Hello world!" << std::endl;\n' +
+            '}\n'
     },
     'd': {
         value: '102',
@@ -79,11 +97,22 @@ var languages = {
         display: 'Tcl',
         mode: ''
     },
-    '': {
-        value: '',
-        display: '',
-        mode: ''
-    }
+    'java' : {
+        value: '10',
+        display: 'Java',
+        mode: 'text/x-java',
+        sample:
+             'class Main {\n' +
+             '  public static void main (String[] args) throws java.lang.Exception {\n' +
+             '    System.out.println("Hello world!");\n' +
+             '  }\n' +
+             '}\n'
+    },
+    'js' : {
+        value: '112',
+        display: 'Javascript',
+        mode: 'text/javascript'
+    },
 };
 
 var language_order = [
@@ -102,5 +131,7 @@ var language_order = [
   'python3',
   'ruby',
   'scheme',
-  'tcl'
+  'tcl',
+  'java',
+  'js',
 ];
